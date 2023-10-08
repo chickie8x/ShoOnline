@@ -1,0 +1,40 @@
+<template>
+  <div>
+    <ul
+      class="flex m-auto justify-center space-x-8 bg-orange-900 bg-opacity-40 backdrop-blur-md h-10 items-center"
+    >
+      <li
+        v-for="(item, idx) in items"
+        :key="idx"
+        class="text-red-950 font-EvilEmpire text-2xl duration-300 h-full flex items-center border-b-2 border-white border-opacity-0"
+        :class="[
+          currPath === item.path ? 'text-white text-opacity-90 duration-300 border-opacity-100' : ''
+        ]"
+      >
+        <router-link :to="item.path">{{ item.pageName }}</router-link>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+import { computed, ref } from 'vue'
+import navItems from './nav'
+import { useRoute } from 'vue-router'
+export default {
+  name: 'NavBar',
+
+  setup() {
+    const items = ref(navItems)
+    const route = useRoute()
+    const currPath = computed(() => {
+      return route.path
+    })
+
+    return {
+      items,
+      currPath
+    }
+  }
+}
+</script>

@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  @font-face {
+    font-family: EvilEmpire;
+    src: url('./fonts/EvilEmpire-4BBVK.ttf');
+  }
+
+  @font-face {
+    font-family: YoungSerif;
+    src: url('./fonts/YoungSerif-Regular.ttf');
+  }
+}

@@ -6,14 +6,18 @@
       <div v-for="(item, idx) in tabs" :key="idx" @click="changeTab(item)">
         <button
           class="bg-white bg-opacity-40 hover:bg-opacity-60 duration-300 px-4 py-2"
-          :class="[item === currTab ? 'bg-orange-800 bg-opacity-80 text-white' : '', idx === 0 ? 'rounded-tl-md' : '', idx===tabs.length-1?'rounded-tr-md':'']"
+          :class="[
+            item === currTab ? '!bg-orange-800 bg-opacity-80 text-white' : '',
+            idx === 0 ? 'rounded-tl-md' : '',
+            idx === tabs.length - 1 ? 'rounded-tr-md' : ''
+          ]"
         >
           {{ item.text }}
         </button>
       </div>
     </div>
 
-    <div class="bg-white bg-opacity-40 px-4 py-2">
+    <div class="bg-white bg-opacity-40 px-4 py-2 rounded-tr-md rounded-bl-md rounded-br-md h-[750px] overflow-auto">
       <component :is="currTab.component"></component>
     </div>
   </div>

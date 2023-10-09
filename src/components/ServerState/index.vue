@@ -1,18 +1,22 @@
 <template>
-  <div class=" text-white text-opacity-80">
-    <span class="block mb-2 text-2xl font-YoungSerif">Server state</span>
+  <div
+    class="text-white text-opacity-80 bg-white bg-opacity-20 backdrop-blur-md rounded-md w-full p-4"
+  >
+    <span class="block mb-2 text-xl font-YoungSerif">Server state</span>
     <div class="flex items-center space-x-2 text-sm">
-        <span class=" block w-2 h-2 bg-green-500 rounded-full"></span>
-        <span>Server is Online</span>
+      <span class="block w-3 h-3 bg-green-500 rounded-full"></span>
+      <span>Server is Online</span>
     </div>
     <div>
-        
+      <span class="text-sm"
+        >War Timer : <span class="font-bold text-orange-200">23:36:02 (GMT+7)</span></span
+      >
     </div>
   </div>
 </template>
 
 <script>
 export default {
-    name: "ServerState"
+  name: 'ServerState'
 }
 </script>

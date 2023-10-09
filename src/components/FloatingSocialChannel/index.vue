@@ -1,5 +1,8 @@
 <template>
-  <div class="flex items-center duration-300" :class="[!display?'translate-x-32':'translate-x-[-32]']">
+  <div
+    class="flex items-center duration-300"
+    :class="[!display ? 'translate-x-32' : 'translate-x-[-32]']"
+  >
     <span
       class="flex w-4 h-8 text-orange-800 justify-center items-center bg-white translate-x-2 rounded-tl-md rounded-bl-md text-xl cursor-pointer"
       v-html="arrow"

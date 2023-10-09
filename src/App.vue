@@ -5,7 +5,10 @@
     </div>
     <RouterView />
     <div class="fixed bottom-4 right-0">
-      <FloatingSocialChannel />
+      <FloatingSocialChannel class="opacity-80" />
+    </div>
+    <div class="text-center text-white text-sm text-opacity-80">
+      <span class="block my-2">Sho Online Revive 2023</span>
     </div>
   </div>
 </template>
@@ -24,11 +27,14 @@ export default {
 <style scoped>
 .main-wrapper {
   background-image: url('./assets/images/background.png');
-  min-height: 100vh;
+  height: 100vh;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
   position: relative;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
 </style>

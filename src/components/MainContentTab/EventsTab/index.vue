@@ -1,15 +1,28 @@
 <template>
-  <div>this is events tab</div>
+  <div>
+    <span>list article</span>
+    <div>
+      {{ showdata }}
+    </div>
+  </div>
 </template>
 
 <script>
-import db from '@/firebase'
+import { readList } from '@/firebase'
+import { computed, ref } from 'vue'
+
 
 export default {
   name: 'EventsTab',
+
   setup() {
-    console.log(db)
-    return {}
+    const path = 'ShoOnline/news/'
+    
+    
+  
+    return {
+      
+    }
   }
 }
 </script>

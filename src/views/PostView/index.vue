@@ -53,7 +53,7 @@
 import { computed, ref } from 'vue'
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
-import { writeDb } from '@/firebase'
+import { readList, writeDb } from '@/firebase'
 
 export default {
   name: 'PostView',
@@ -71,31 +71,17 @@ export default {
 
     const postData = computed(() => {
       return {
-        article: {
           articleTitle: articleTitle.value,
           articleCat: articleCat.value,
           articleContent: articleContent.value,
           timestamp: Date.now()
-        }
       }
     })
 
     const postArticle = () => {
-      console.log('starting write firebase db')
-      writeDb(postData.value, 'ShoOnline/News/')
+      console.log(postData)
+      writeDb(postData.value, `ShoOnline/news/${articleTitle.value}`)
     }
-
-    // const dbref = fbref(db)
-    // get(child(dbref, `ShoOnline/News/`)).then((snapshot)=>{
-    //   if(snapshot.exists()){
-    //     console.log(snapshot.val())
-    //   }
-    //   else{
-    //     console.log(' no data')
-    //   }
-    // }).catch((error)=> {
-    //   console.error(error)
-    // })
 
     return {
       articleCat,

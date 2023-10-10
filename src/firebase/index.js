@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getDatabase, ref, set } from 'firebase/database'
+import { getDatabase, ref, set, get , child } from 'firebase/database'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD_IkjoEZXi33gGFxKJJRehF-Ui-nLtfq0',
@@ -13,14 +13,34 @@ const firebaseConfig = {
 }
 
 const app = initializeApp(firebaseConfig)
+const db = getDatabase(app)
 
 export const writeDb = (data, path) => {
-  const db = getDatabase(app)
   set(ref(db, path), data)
     .then(() => {
       console.log(data)
+      return true
     })
     .catch((err) => {
       console.log(err)
+      return false
     })
+}
+
+
+export const readList = (path) => {
+  const refdb = ref(db)
+  get(child(refdb, path)).then((snapshot) => {
+    if(snapshot.exists()){
+      console.log(snapshot.val())
+      return snapshot.val()
+    }
+  }).catch((error) => {
+    console.log(error)
+    return false
+  })
+}
+
+export const readArticle = (articleId) => {
+
 }

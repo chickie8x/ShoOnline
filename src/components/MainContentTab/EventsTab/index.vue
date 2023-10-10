@@ -3,7 +3,13 @@
 </template>
 
 <script>
+import db from '@/firebase'
+
 export default {
-  name: 'EventsTab'
+  name: 'EventsTab',
+  setup() {
+    console.log(db)
+    return {}
+  }
 }
 </script>

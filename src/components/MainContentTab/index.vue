@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full overflow-auto">
+  <div class="">
     <div
       class="border-b border-orange-800 flex items-center text-sm font-YoungSerif text-orange-800 divide-x divide-orange-600"
     >
@@ -17,7 +17,9 @@
       </div>
     </div>
 
-    <div class="bg-white bg-opacity-40 px-4 py-2 rounded-tr-md rounded-bl-md rounded-br-md h-[750px] overflow-auto">
+    <div
+      class="bg-white bg-opacity-40 backdrop-blur-md px-4 py-2 rounded-tr-md rounded-bl-md rounded-br-md h-[560px] overflow-auto"
+    >
       <component :is="currTab.component"></component>
     </div>
   </div>

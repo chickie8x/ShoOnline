@@ -6,7 +6,6 @@ const newsData = [
     author: 'admin',
     img: 'src/assets/images/article_img.png',
     date: '10/08/2023'
-
   },
 
   {

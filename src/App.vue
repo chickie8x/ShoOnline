@@ -1,14 +1,18 @@
 <template>
   <div class="main-wrapper">
-    <div>
+    <div class="h-12">
       <NavBar />
     </div>
-    <RouterView />
+    <div class="h-[calc(100%-88px)]">
+      <RouterView />
+    </div>
     <div class="fixed bottom-4 right-0">
       <FloatingSocialChannel class="opacity-80" />
     </div>
-    <div class="text-center text-white text-sm text-opacity-80">
-      <span class="block my-2">Sho Online Revive 2023</span>
+    <div
+      class="flex h-10 items-center justify-center text-center text-white text-sm text-opacity-80"
+    >
+      <span class="block h-10">Sho Online Revive 2023</span>
     </div>
   </div>
 </template>

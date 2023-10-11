@@ -1,11 +1,10 @@
 <template>
   <div class="space-y-4">
-    <div v-for="value, key, idx in data" :key="idx" class="bg-white bg-opacity-40 ">
+    <div v-for="(value, key, idx) in data" :key="idx" class="bg-white bg-opacity-40">
       <div>
         <span>{{ value.articleTitle }}</span>
         <div class="ql-snow">
-          <div class="ql-editor" v-html="value.articleContent">
-          </div>
+          <div class="ql-editor" v-html="value.articleContent"></div>
         </div>
       </div>
     </div>
@@ -23,6 +22,6 @@ export default {
       require: true,
       default: () => {}
     }
-  },
+  }
 }
 </script>

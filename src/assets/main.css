@@ -13,3 +13,8 @@
     src: url('./fonts/YoungSerif-Regular.ttf');
   }
 }
+
+html,
+body {
+  height: 100%;
+}

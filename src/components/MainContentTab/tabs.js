@@ -2,25 +2,25 @@ const tabs = [
   {
     id: 1,
     text: 'News',
-    cat: 'news',
+    cat: 'news'
   },
 
   {
     id: 1,
     text: 'Events',
-    cat: 'events',
+    cat: 'events'
   },
 
   {
     id: 1,
     text: 'Update',
-    cat: 'updates',
+    cat: 'updates'
   },
 
   {
     id: 1,
     text: 'Community',
-    cat: 'community',
+    cat: 'community'
   }
 ]
 

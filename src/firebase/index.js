@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getDatabase, ref, set, get, child, push } from 'firebase/database'
 import { getStorage } from 'firebase/storage'
-import { getDownloadURL, uploadBytes } from 'firebase/storage'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD_IkjoEZXi33gGFxKJJRehF-Ui-nLtfq0',
@@ -31,24 +30,22 @@ export const writeDb = (data, path) => {
     })
 }
 
-
 export const readList = (bag, path) => {
   const refdb = ref(db)
-  get(child(refdb, path)).then((snapshot) => {
-    if (snapshot.exists()) {
-      if (snapshot.val() != '') {
-        bag.value = snapshot.val()
+  get(child(refdb, path))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        if (snapshot.val() != '') {
+          bag.value = snapshot.val()
+        } else {
+          bag.value = {}
+        }
       }
-      else {
-        bag.value = {}
-      }
-    }
-  }).catch((error) => {
-    console.log(error)
-    return false
-  })
+    })
+    .catch((error) => {
+      console.log(error)
+      return false
+    })
 }
 
-export const readArticle = (articleId) => {
-
-}
+export const readArticle = (articleId) => {}

@@ -4,7 +4,7 @@
       <SidebarLeft />
     </div>
 
-    <div class="w-2/4 p-4">
+    <div class="w-2/4 p-4 h-full">
       <MainContentTab />
     </div>
 

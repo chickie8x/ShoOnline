@@ -20,27 +20,44 @@
     <div
       class="bg-white bg-opacity-40 backdrop-blur-md px-4 py-2 rounded-tr-md rounded-bl-md rounded-br-md h-[560px] overflow-auto"
     >
-      <component :is="currTab.component"></component>
+      <!-- <component :is="currTab.component"></component> -->
+      <TabUnit :data="data"/>
     </div>
   </div>
 </template>
 
 <script>
 import tabs from './tabs.js'
-import { shallowRef } from 'vue'
+import { readList } from '@/firebase'
+import { shallowRef, ref, onMounted, computed } from 'vue'
+import TabUnit from '@/components/MainContentTab/TabUnit/index.vue'
 
 export default {
   name: 'MainContentTab',
+  components: {
+    TabUnit
+  },
   setup() {
     const currTab = shallowRef(tabs[0])
+    const data = ref({})
+    const path = computed(() => {
+      return `ShoOnline/${currTab.value.cat}/`
+    })
     const changeTab = (tab) => {
       currTab.value = tab
+      readList(data, path.value)
     }
+
+    onMounted(() => {
+      readList(data, path.value)
+    })
+
 
     return {
       tabs,
       currTab,
-      changeTab
+      changeTab,
+      data
     }
   }
 }

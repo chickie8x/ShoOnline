@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app'
-import { getDatabase, ref, set, get , child } from 'firebase/database'
+import { getDatabase, ref, set, get, child, push } from 'firebase/database'
+import { getStorage } from 'firebase/storage'
+import { getDownloadURL, uploadBytes } from 'firebase/storage'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD_IkjoEZXi33gGFxKJJRehF-Ui-nLtfq0',
@@ -14,9 +16,11 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 const db = getDatabase(app)
+export const projectStorage = getStorage(app)
 
 export const writeDb = (data, path) => {
-  set(ref(db, path), data)
+  const newPostRef = push(ref(db, path))
+  set(newPostRef, data)
     .then(() => {
       console.log(data)
       return true
@@ -28,12 +32,16 @@ export const writeDb = (data, path) => {
 }
 
 
-export const readList = (path) => {
+export const readList = (bag, path) => {
   const refdb = ref(db)
   get(child(refdb, path)).then((snapshot) => {
-    if(snapshot.exists()){
-      console.log(snapshot.val())
-      return snapshot.val()
+    if (snapshot.exists()) {
+      if (snapshot.val() != '') {
+        bag.value = snapshot.val()
+      }
+      else {
+        bag.value = {}
+      }
     }
   }).catch((error) => {
     console.log(error)

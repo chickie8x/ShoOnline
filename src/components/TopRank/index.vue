@@ -16,9 +16,12 @@
       <ul>
         <li v-for="(item, idx) in showRank" :key="idx">
           <div
-            class="flex items-center px-4 py-2 bg-white"
+            class="flex items-center px-4 py-2 bg-white font-YoungSerif"
             :class="[idx % 2 === 0 ? 'bg-opacity-10' : 'bg-opacity-20']"
           >
+            <div class="mr-3 ">
+              {{ idx + 1 }}
+            </div>
             <div class="w-6 h-5">
               <img src="@/assets/icons/crown1st.svg" alt="" v-if="idx === 0" class="w-4 h-4" />
               <img src="@/assets/icons/crown2nd.svg" alt="" v-if="idx === 1" class="w-4 h-4" />

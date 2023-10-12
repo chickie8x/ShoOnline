@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="h-full">
     <ul
-      class="flex m-auto justify-center space-x-8 bg-orange-900 bg-opacity-40 backdrop-blur-md h-10 items-center"
+      class="flex m-auto h-full justify-center space-x-8 bg-orange-900 bg-opacity-40 backdrop-blur-md items-center"
     >
       <li
         v-for="(item, idx) in items"

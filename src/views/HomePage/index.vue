@@ -1,16 +1,17 @@
 <template>
   <div class="flex h-full">
-    <div class="w-1/4 h-full flex flex-col items-center p-4 space-y-2">
+    <div class="w-1/4 h-full flex flex-col items-center px-4 pt-4 space-y-2">
       <SidebarLeft />
     </div>
 
-    <div class="w-2/4 p-4 h-full">
+    <div class="w-2/4 px-4 pt-4 h-full">
       <MainContentTab />
     </div>
 
     <div class="w-1/4 h-full">
       <SidebarRight />
     </div>
+
   </div>
 </template>
 

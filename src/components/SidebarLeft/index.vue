@@ -1,10 +1,10 @@
 <template>
   <div class="w-full">
     <div
-      class="w-full flex items-center justify-center bg-white bg-opacity-40 font-YoungSerif text-orange-800 divide-x divide-orange-500 rounded-md backdrop-blur-md"
+      class="w-full h-12 flex items-center justify-center bg-white bg-opacity-40 font-YoungSerif text-orange-800 divide-x divide-orange-500 rounded-md backdrop-blur-md"
     >
-      <button class="outline-none px-4 py-2 w-1/2">Login</button>
-      <button class="outline-none px-4 py-2 w-1/2">Register</button>
+      <a href="/login" class="flex items-center justify-center w-1/2 h-full">Login</a>
+      <a href="/signup" class="flex items-center justify-center w-1/2 h-full">Sign Up</a>
     </div>
     <div
       class="w-full h-24 bg-white bg-opacity-40 rounded-md mt-2 flex justify-center items-center font-EvilEmpire text-2xl text-orange-800 backdrop-blur-md"
@@ -21,6 +21,15 @@
         <img src="@/assets/icons/dollar.svg" alt="" class="w-12 h-12 mr-2" />Coin
         Purchase</router-link
       >
+    </div>
+
+    <div class="bg-white bg-opacity-40 rounded-md p-4 mt-2 font-EvilEmpire text-orange-800 text-2xl flex flex-col items-center justify-center backdrop-blur-md">
+      <span>Channels</span>
+      <div class="flex justify-center space-x-8 mt-2">
+        <a href=""><img src="@/assets/icons/fb-icon.svg" alt="" class="w-8 h-8"></a>
+        <a href=""><img src="@/assets/icons/youtube.svg" alt="" class="w-8 h-8"></a>
+        <a href=""><img src="@/assets/icons/discord.svg" alt="" class="w-8 h-8"></a>
+      </div>
     </div>
   </div>
 </template>

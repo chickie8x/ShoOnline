@@ -1,6 +1,10 @@
 import { initializeApp } from 'firebase/app'
 import { getDatabase, ref, set, get, child, push } from 'firebase/database'
 import { getStorage } from 'firebase/storage'
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { ref as vueRef } from 'vue'
+
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD_IkjoEZXi33gGFxKJJRehF-Ui-nLtfq0',
@@ -15,6 +19,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 const db = getDatabase(app)
+const auth = getAuth()
+export const user = vueRef(auth.currentUser)
 export const projectStorage = getStorage(app)
 
 export const writeDb = (data, path) => {
@@ -48,4 +54,28 @@ export const readList = (bag, path) => {
     })
 }
 
-export const readArticle = (articleId) => {}
+export const readArticle = (articleId) => { }
+
+auth.onAuthStateChanged((newUser) => {
+  user.value = newUser;
+});
+
+export const signup = (email, password, confirmPassword) => {
+  if (password != confirmPassword) {
+    alert('password do not match')
+    return
+  }
+  else {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up 
+        user.value = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  }
+}

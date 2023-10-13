@@ -14,6 +14,7 @@
         <router-link :to="item.path">{{ item.pageName }}</router-link>
       </li>
     </ul>
+    <span>{{ userInfo.value?userInfo.value.email:'not login' }}</span>
   </div>
 </template>
 
@@ -21,6 +22,9 @@
 import { computed, ref } from 'vue'
 import navItems from './nav'
 import { useRoute } from 'vue-router'
+import { user } from '@/firebase'
+
+
 export default {
   name: 'NavBar',
 
@@ -30,10 +34,13 @@ export default {
     const currPath = computed(() => {
       return route.path
     })
-
+    const userInfo = computed(() => {
+      return user
+    })
     return {
       items,
-      currPath
+      currPath,
+      userInfo
     }
   }
 }

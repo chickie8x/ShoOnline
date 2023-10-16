@@ -11,17 +11,17 @@
             <div>
                 <span class="text-sm font-YoungSerif mt-4 block text-orange-900">Email:</span>
                 <div class="flex items-center border border-orange-800 border-opacity-70 px-2 py-1 rounded-full bg-white bg-opacity-50 text-orange-900">
-                    <img src="src/assets/icons/user.svg" alt="" class="w-4 h-4 mr-2">
+                    <img src="@/assets/icons/user.svg" alt="" class="w-4 h-4 mr-2">
                     <input type="email" v-model="email" class="border-none bg-transparent outline-none w-full">
                 </div>
                 <span class="text-sm font-YoungSerif mt-4 block text-orange-900">Password: </span>
                 <div class="flex items-center border border-orange-800 border-opacity-70 px-2 py-1 rounded-full bg-white bg-opacity-50 text-orange-900">
-                    <img src="src/assets/icons/password.svg" alt="" class="w-4 h-4 mr-2">
+                    <img src="@/assets/icons/password.svg" alt="" class="w-4 h-4 mr-2">
                     <input type="password" v-model="password" class="border-none bg-transparent outline-none  w-full">
                 </div>
                 <span class="text-sm font-YoungSerif mt-4 block text-orange-900">Confirm password: </span>
                 <div class="flex items-center border border-orange-800 border-opacity-70 px-2 py-1 rounded-full bg-white bg-opacity-50 text-orange-900">
-                    <img src="src/assets/icons/password.svg" alt="" class="w-4 h-4 mr-2">
+                    <img src="@/assets/icons/password.svg" alt="" class="w-4 h-4 mr-2">
                     <input type="password" v-model="confirmPassword" class="border-none bg-transparent outline-none  w-full">
                 </div>
                 <div class="flex items-center justify-center mt-2">

@@ -1,10 +1,19 @@
 <template>
   <div class="w-full">
-    <div
-      class="w-full h-12 flex items-center justify-center bg-white bg-opacity-40 font-YoungSerif text-orange-800 divide-x divide-orange-500 rounded-md backdrop-blur-md"
-    >
+    <div>
+    <div v-if="!currUser.value" class="w-full h-12 flex items-center justify-center bg-white bg-opacity-40 font-YoungSerif text-orange-800 divide-x divide-orange-500 rounded-md backdrop-blur-md">
       <a href="/login" class="flex items-center justify-center w-1/2 h-full">Login</a>
       <a href="/signup" class="flex items-center justify-center w-1/2 h-full">Sign Up</a>
+    </div>
+    <div v-else class="flex flex-col items-start bg-white bg-opacity-40 p-4 rounded-md">
+      <div class="flex justify-start text-orange-800">
+        <img src="@/assets/icons/user.svg" alt="" class="w-6 h-6 mr-2">
+        <span>{{ currUser.value?currUser.value.email:'' }}</span>
+      </div>
+      <div class="flex justify-end w-full">
+        <button @click="doLogout" class="text-sm text-red-700 hover:underline duration-200">Sign Out</button>
+      </div>
+    </div>
     </div>
     <div
       class="w-full h-24 bg-white bg-opacity-40 rounded-md mt-2 flex justify-center items-center font-EvilEmpire text-2xl text-orange-800 backdrop-blur-md"
@@ -35,5 +44,26 @@
 </template>
 
 <script>
-export default {}
+import { user, logout } from '@/firebase'
+import { computed } from 'vue'
+
+
+export default {
+  name: 'SideBarLeft',
+
+  setup() {
+    const currUser = computed(() => {
+      return user
+    })
+
+    const doLogout = () => {
+      logout()
+    }
+
+    return {
+      currUser,
+      doLogout
+    }
+  }
+}
 </script>

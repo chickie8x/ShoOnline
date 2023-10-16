@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getDatabase, ref, set, get, child, push } from 'firebase/database'
 import { getStorage } from 'firebase/storage'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut  } from "firebase/auth";
 import { ref as vueRef } from 'vue'
 
 
@@ -22,6 +22,8 @@ const db = getDatabase(app)
 const auth = getAuth()
 export const user = vueRef(auth.currentUser)
 export const projectStorage = getStorage(app)
+export const loginErrorMessage = vueRef(undefined)
+export const signupErrorMessage = vueRef(undefined)
 
 export const writeDb = (data, path) => {
   const newPostRef = push(ref(db, path))
@@ -31,7 +33,7 @@ export const writeDb = (data, path) => {
       return true
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err.code)
       return false
     })
 }
@@ -60,7 +62,7 @@ auth.onAuthStateChanged((newUser) => {
   user.value = newUser;
 });
 
-export const signup = (email, password, confirmPassword) => {
+export const signup = (email, password, confirmPassword, doRedirect) => {
   if (password != confirmPassword) {
     alert('password do not match')
     return
@@ -70,12 +72,42 @@ export const signup = (email, password, confirmPassword) => {
       .then((userCredential) => {
         // Signed up 
         user.value = userCredential.user;
+        doRedirect()
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
+        signupErrorMessage.value = errorCode
+        setTimeout(() => {
+          signupErrorMessage.value = undefined
+        }, 5000);
         // ..
       });
   }
+}
+
+export const signin = (email, password, doRedirect) => {
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      user.value = userCredential.user;
+      doRedirect()
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      loginErrorMessage.value = errorCode;
+      setTimeout(() => {
+        loginErrorMessage.value = undefined
+      }, 5000);
+    });
+}
+
+export const logout = () => {
+  signOut(auth).then(() => {
+    // Sign-out successful.
+    console.log('singed out', user)
+  }).catch((error) => {
+    // An error happened.
+  });
 }

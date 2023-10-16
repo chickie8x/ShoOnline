@@ -1,10 +1,10 @@
 <template>
   <div class="space-y-4">
-    <div v-for="(value, key, idx) in data" :key="idx" class="bg-white bg-opacity-40">
+    <div v-for="(value, key, idx) in data" :key="idx" class="bg-white bg-opacity-40 p-2">
       <div>
-        <span>{{ value.articleTitle }}</span>
-        <div class="ql-snow">
-          <div class="ql-editor" v-html="value.articleContent"></div>
+        <span class="text-orange-800 text-xl">{{ value.topic }}</span>
+        <div class="">
+          <span>{{ value.content }}</span>
         </div>
       </div>
     </div>

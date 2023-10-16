@@ -14,7 +14,6 @@
         <router-link :to="item.path">{{ item.pageName }}</router-link>
       </li>
     </ul>
-    <span>{{ userInfo.value?userInfo.value.email:'not login' }}</span>
   </div>
 </template>
 
@@ -34,13 +33,10 @@ export default {
     const currPath = computed(() => {
       return route.path
     })
-    const userInfo = computed(() => {
-      return user
-    })
+
     return {
       items,
       currPath,
-      userInfo
     }
   }
 }

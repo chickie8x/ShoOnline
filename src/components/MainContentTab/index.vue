@@ -27,9 +27,10 @@
 
 <script>
 import tabs from './tabs.js'
-import { readList } from '@/firebase'
+// import { readList } from '@/firebase'
 import { shallowRef, ref, onMounted, computed } from 'vue'
 import TabUnit from '@/components/MainContentTab/TabUnit/index.vue'
+import axios from 'axios'
 
 export default {
   name: 'MainContentTab',
@@ -39,16 +40,27 @@ export default {
   setup() {
     const currTab = shallowRef(tabs[0])
     const data = ref({})
-    const path = computed(() => {
-      return `ShoOnline/${currTab.value.cat}/`
-    })
+    const newsUrl = 'https://sho.onl:8080/news'
+    const fetchNews = async () => {
+      const news = await axios.get(newsUrl)
+      if(news.data){
+        console.log(news.data.news)
+        data.value = news.data.news
+      }
+    }
+
+    // const path = computed(() => {
+    //   return `ShoOnline/${currTab.value.cat}/`
+    // })
     const changeTab = (tab) => {
       currTab.value = tab
-      readList(data, path.value)
+      // data.value = {}
+      // readList(data, path.value)
     }
 
     onMounted(() => {
-      readList(data, path.value)
+      // readList(data, path.value)
+      fetchNews()
     })
 
     return {

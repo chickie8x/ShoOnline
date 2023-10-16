@@ -2,8 +2,8 @@
   <div class="w-full">
     <div>
     <div v-if="!currUser.value" class="w-full h-12 flex items-center justify-center bg-white bg-opacity-40 font-YoungSerif text-orange-800 divide-x divide-orange-500 rounded-md backdrop-blur-md">
-      <a href="/login" class="flex items-center justify-center w-1/2 h-full">Login</a>
-      <a href="/signup" class="flex items-center justify-center w-1/2 h-full">Sign Up</a>
+      <router-link to="/login" class="flex items-center justify-center w-1/2 h-full">Login</router-link>
+      <router-link to="/signup" class="flex items-center justify-center w-1/2 h-full">Sign Up</router-link>
     </div>
     <div v-else class="flex flex-col items-start bg-white bg-opacity-40 p-4 rounded-md">
       <div class="flex justify-start text-orange-800">
